@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import noteContext from "../context/notes/noteContext";
-
 import AlertContext from "../context/notes/alertContext";
 
 const AddNotes = () => {
@@ -59,13 +58,14 @@ const AddNotes = () => {
         <label htmlFor="edescription" className="form-label">
           Description
         </label>
-        <input
+        <textarea
           className="form-control"
           id="edescription"
           name="edescription"
+          rows={4}
           onChange={handleChange}
           value={modal.description}
-        ></input>
+        ></textarea>
       </div>
       <div className="mb-3">
         <label htmlFor="etag" className="form-label">

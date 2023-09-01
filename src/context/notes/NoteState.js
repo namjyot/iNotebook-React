@@ -40,12 +40,12 @@ const NoteState = (props) => {
       }
       else{
         showAlert({type: "success", message: "Note Added Successfully!"})
-        getNotes();
+        setNotes(notes.concat(json.note))
       }
     }
   
 
-  const handleDeleteNote = async (id, showAlert) => {
+  const handleDeleteNote = async (id, showAlert, deleteRef) => {
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
       method: "DELETE", // *GET, POST, PUT, DELETE, etc.
       headers: {
@@ -58,8 +58,9 @@ const NoteState = (props) => {
       showAlert({type:"danger", message: json.error})
     }
     else{
-      showAlert({type: "success", message: json.Success})
+      deleteRef.current.click();
       getNotes();
+      showAlert({type: "success", message: json.Success})
     }
   }
 
@@ -81,8 +82,8 @@ const NoteState = (props) => {
     getNotes();
     showAlert({type: "success", message: 'Note Updated Successfully!'})
     modalRef.current.click();
+    }
   }
-}
 
   const handleModal = (note) => {
     setModal(note);

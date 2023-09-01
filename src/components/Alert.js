@@ -13,7 +13,7 @@ const Alert = () => {
   return (
     <div style={{ height: "45px" }}>
       {alert && (
-        <div class={`alert alert-${alert.type}`} role="alert">
+        <div className={`alert alert-${alert.type}`} role="alert">
           <strong>{capitalize(alert.type)}!</strong> {alert.message}
         </div>
       )}
